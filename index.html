@@ -353,25 +353,36 @@
     }
 
     .layer-group {
-      margin-bottom: 1.3rem;
-      background: #fff;
-      border: 1px solid var(--borda);
-      border-radius: var(--radius-md);
+      margin-bottom: 1.1rem;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .layer-group:hover {
+      box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+      border-color: #cbd5e1;
     }
 
     .layer-group-title {
-      padding: 10px 14px;
+      padding: 11px 14px;
       font-size: 0.82rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: #f4f6f8;
-      color: var(--texto-secundario);
+      letter-spacing: 0.02em;
+      background: #f8fafc;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .layer-group-title i {
+      color: #08475E;
+      font-size: 0.88rem;
     }
 
     .layer-item {
@@ -2067,20 +2078,23 @@
         </div>
 
         <!-- ESTRATIFICAÇÃO TEMÁTICA DAS EDIFICAÇÕES / IMÓVEIS -->
-        <div class="layer-group" style="background: #FAF8F2; border: 1.5px solid #D2A283; border-radius: 8px; padding: 12px; margin-bottom: 16px;">
-          <div class="layer-group-title" style="margin-bottom: 8px; color: #08475E; font-weight: 800; font-size: 0.84rem; display: flex; align-items: center; justify-content: space-between;">
-            <span><i class="fa-solid fa-palette" style="color: #C9A50F; margin-right: 6px;"></i>Estratificação dos Imóveis</span>
+        <div class="layer-group">
+          <div class="layer-group-title">
+            <span>Estratificação dos Imóveis</span>
+            <i class="fa-solid fa-palette"></i>
           </div>
-          <div style="font-size: 0.74rem; color: #706C57; margin-bottom: 6px;">Selecione o atributo para colorir o mapa:</div>
-          <select id="sel-estratificacao-imoveis" onchange="aplicarEstratificacaoImoveis(this.value)" style="width: 100%; padding: 7px 10px; border: 1.5px solid #706C57; border-radius: 5px; font-weight: 700; color: #08475E; background: #FFFFFF; font-size: 0.82rem; cursor: pointer;">
-            <option value="CONSERVACA" selected>Grau de Conservação</option>
-            <option value="USO">Classificação de Uso</option>
-            <option value="PRESERVACA">Grau de Preservação</option>
-            <option value="PROPRIEDAD">Titularidade dos Imóveis</option>
-            <option value="EPOCA CONS">Época de Construção</option>
-            <option value="ESTILO ARQ">Estilo de Arquitetura</option>
-          </select>
-          <div id="legenda-estratificacao-mapa" style="margin-top: 10px; font-size: 0.74rem; line-height: 1.5;"></div>
+          <div style="padding: 12px 14px;">
+            <div style="font-size: 0.75rem; color: #64748b; margin-bottom: 6px; font-weight: 500;">Selecione o atributo para colorir o mapa:</div>
+            <select id="sel-estratificacao-imoveis" onchange="aplicarEstratificacaoImoveis(this.value)" style="width: 100%; padding: 8px 10px; border: 1.5px solid #cbd5e1; border-radius: 6px; font-weight: 600; color: #08475E; background: #FFFFFF; font-size: 0.82rem; cursor: pointer;">
+              <option value="CONSERVACA" selected>Grau de Conservação</option>
+              <option value="USO">Classificação de Uso</option>
+              <option value="PRESERVACA">Grau de Preservação</option>
+              <option value="PROPRIEDAD">Titularidade dos Imóveis</option>
+              <option value="EPOCA CONS">Época de Construção</option>
+              <option value="ESTILO ARQ">Estilo de Arquitetura</option>
+            </select>
+            <div id="legenda-estratificacao-mapa" style="margin-top: 10px; font-size: 0.74rem; line-height: 1.5;"></div>
+          </div>
         </div>
 
         <!-- GRUPO: PERÍMETROS DE TOMBAMENTO (IPHAN) -->
@@ -2240,9 +2254,10 @@
         </div>
 
                 <!-- GRUPO: UNIDADE DE PAISAGEM - NÍVEL DE TRATO -->
-        <div class="layer-group" style="border: 1.5px solid #629B78; border-radius: 8px;">
-          <div class="layer-group-title" style="background: #F4FBF7; color: #1e3a29;">
-            <span><i class="fa-solid fa-mountain-sun" style="color: #629B78; margin-right: 6px;"></i>Unidade de Paisagem – Nível de Trato</span>
+        <div class="layer-group">
+          <div class="layer-group-title">
+            <span>Unidade de Paisagem – Tratos</span>
+            <i class="fa-solid fa-mountain-sun"></i>
           </div>
 
           <div class="layer-item">
@@ -2326,7 +2341,8 @@
         <!-- GRUPO: USO DO SOLO (2014 & 2024) -->
         <div class="layer-group">
           <div class="layer-group-title">
-            <span><i class="fa-solid fa-tree" style="margin-right: 6px;"></i>Uso e Cobertura do Solo</span>
+            <span>Uso e Cobertura do Solo</span>
+            <i class="fa-solid fa-tree"></i>
           </div>
 
           <div class="layer-item">
@@ -2355,7 +2371,8 @@
         <!-- GRUPO: LINHAS DE VAZÃO DO RIO SÃO FRANCISCO -->
         <div class="layer-group">
           <div class="layer-group-title">
-            <span><i class="fa-solid fa-water-ladder" style="margin-right: 6px;"></i>Linhas de Vazão & Cota de Cheia</span>
+            <span>Linhas de Vazão & Cotas</span>
+            <i class="fa-solid fa-water-ladder"></i>
           </div>
 
           <div class="layer-item">
