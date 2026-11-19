@@ -204,42 +204,62 @@
       opacity: 0;
       pointer-events: none;
     }
-    /* BOTÃO PRINCIPAL FLUTUANTE DE LIGAR/DESLIGAR CAMADAS */
-    .btn-toggle-sidebar {
+    /* BARRA SUPERIOR ESQUERDA FLUTUANTE DO MAPA */
+    .map-controls-topleft {
       position: absolute;
       top: 18px;
       left: 18px;
       z-index: 1000;
-      background: #08475E;
-      color: #ffffff;
-      border: 1.5px solid rgba(255,255,255,0.4);
-      padding: 9px 16px;
-      border-radius: 30px;
-      box-shadow: 0 6px 20px rgba(8, 71, 94, 0.35);
-      cursor: pointer;
       display: flex;
       align-items: center;
-      gap: 9px;
+      gap: 10px;
+    }
+    .btn-toggle-sidebar {
+      background: #08475E;
+      color: #ffffff;
+      border: 1.5px solid rgba(255,255,255,0.3);
+      padding: 9px 16px;
+      border-radius: 30px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
       font-weight: 700;
-      font-size: 0.84rem;
-      letter-spacing: 0.2px;
-      transition: all 0.25s ease;
+      font-size: 0.82rem;
+      transition: all 0.2s ease;
       user-select: none;
     }
     .btn-toggle-sidebar:hover {
       background: #052F3F;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(8, 71, 94, 0.45);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.28);
     }
     .btn-toggle-sidebar.active-off {
       background: #ffffff;
       color: #08475E;
       border: 1.5px solid #08475E;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
     }
-    .btn-toggle-sidebar.active-off:hover {
-      background: #f0fdf4;
+    .btn-recenter-map {
+      background: #ffffff;
+      color: #08475E;
+      border: 1.5px solid #cbd5e1;
+      padding: 9px 15px;
+      border-radius: 30px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+    .btn-recenter-map:hover {
+      background: #f8fafc;
+      border-color: #08475E;
       color: #052F3F;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.22);
     }
     .btn-close-sidebar-header {
       background: transparent;
@@ -1992,14 +2012,9 @@
     <aside class="map-sidebar">
       <div class="sidebar-header">
         <h2><i class="fa-solid fa-layer-group" style="color: var(--verde-patrimonio);"></i> Camadas SIG</h2>
-        <div style="display: flex; align-items: center; gap: 8px;">
-          <button class="btn-recenter" onclick="focarCentroHistorico()" title="Centralizar no Centro Histórico de Piranhas">
-            <i class="fa-solid fa-crosshairs"></i> Centro Histórico
-          </button>
-          <button class="btn-close-sidebar-header" onclick="setMapSidebarVisibility(false, true)" title="Fechar / Ocultar Aba de Camadas">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
+        <button class="btn-close-sidebar-header" onclick="setMapSidebarVisibility(false)" title="Fechar / Ocultar Aba de Camadas">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
       </div>
 
       <div class="sidebar-content">
@@ -2411,12 +2426,18 @@
     </aside>
 
     <!-- ÁREA CENTRAL DO MAPA -->
-    <button class="btn-toggle-sidebar" id="btn-toggle-map-sidebar" onclick="toggleMapSidebar()" title="Clique para ligar ou desligar a aba de camadas">
-        <i class="fa-solid fa-layer-group" id="icon-toggle-sidebar"></i>
-        <span id="text-toggle-sidebar">Ocultar Camadas</span>
-      </button>
-
-      <main class="map-display">
+    <main class="map-display">
+      <!-- BARRA DE CONTROLES NO TOPO ESQUERDO DO MAPA -->
+      <div class="map-controls-topleft">
+        <button class="btn-toggle-sidebar" id="btn-toggle-map-sidebar" onclick="toggleMapSidebar()" title="Clique para ligar ou desligar a aba de camadas">
+          <i class="fa-solid fa-layer-group" id="icon-toggle-sidebar"></i>
+          <span id="text-toggle-sidebar">Desligar Camadas</span>
+        </button>
+        <button class="btn-recenter-map" onclick="focarCentroHistorico()" title="Centralizar visualização no Centro Histórico de Piranhas">
+          <i class="fa-solid fa-crosshairs"></i>
+          <span>Centro Histórico</span>
+        </button>
+      </div>
       <div id="leaflet-map"></div>
 
       <!-- PAINEL FLUTUANTE DE LEGENDA DINÂMICA (SÓ EXIBE CAMADAS ATIVADAS) -->
