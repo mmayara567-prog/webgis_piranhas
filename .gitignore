@@ -1,0 +1,22 @@
+﻿# Backups e arquivos temporários locais
+*_backup*
+*backup*
+*.tmp
+*.log
+
+# Scripts locais de processamento
+append_base_painel.ps1
+export_clean_dashboards.ps1
+extract_photos.ps1
+
+# Pastas duplicadas ou de trabalho bruto (arquivos oficiais já consolidados em /data)
+ARQUIVOS EM PDF/
+DOCUMENTO DO TOMBAMENTO/
+VIDEO 3D/
+PLANILHA PARA FAZER dashboard/
+
+# Sistema operacional
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
